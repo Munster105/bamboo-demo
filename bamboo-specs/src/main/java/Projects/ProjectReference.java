@@ -2,7 +2,6 @@ package Projects;
 
 import com.atlassian.bamboo.specs.api.builders.project.Project;
 
-
 public class ProjectReference {
 
     private final Project project;

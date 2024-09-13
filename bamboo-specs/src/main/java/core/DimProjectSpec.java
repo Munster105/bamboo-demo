@@ -1,7 +1,6 @@
 package core;
 
 import Plans.HelloWorldPlan;
-import Projects.DIMProject;
 import Projects.ProjectReference;
 import com.atlassian.bamboo.specs.api.BambooSpec;
 import com.atlassian.bamboo.specs.api.builders.plan.Plan;

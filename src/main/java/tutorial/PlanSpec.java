@@ -34,7 +34,7 @@ public class PlanSpec {
 
     PlanPermissions createPlanPermission(PlanIdentifier planIdentifier) {
         Permissions permission = new Permissions()
-                .userPermissions("admin", PermissionType.ADMIN, PermissionType.CLONE, PermissionType.EDIT)
+                .userPermissions("bamboo", PermissionType.ADMIN, PermissionType.CLONE, PermissionType.EDIT)
                 .groupPermissions("bamboo-admin", PermissionType.ADMIN)
                 .loggedInUserPermissions(PermissionType.VIEW)
                 .anonymousUserPermissionView();
@@ -43,14 +43,14 @@ public class PlanSpec {
 
     Project project() {
         return new Project()
-                .name("Project Name")
-                .key("PRJ");
+                .name("Demo")
+                .key("DEMO");
     }
 
     Plan createPlan() {
         return new Plan(
                 project(),
-                "Plan Name", "PLANKEY")
-                .description("Plan created from (enter repository url of your plan)");
+                "Hello World Plan", "HWP")
+                .description("Plan created from github thing");
     }
 }

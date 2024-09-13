@@ -1,7 +1,9 @@
-package core;
+package Specs;
 
 import Plans.HelloWorldPlan;
 import Projects.ProjectReference;
+import config.Config;
+
 import com.atlassian.bamboo.specs.api.BambooSpec;
 import com.atlassian.bamboo.specs.api.builders.plan.Plan;
 import com.atlassian.bamboo.specs.api.builders.plan.PlanIdentifier;
@@ -10,7 +12,6 @@ import com.atlassian.bamboo.specs.util.BambooServer;
 import com.atlassian.bamboo.specs.api.builders.permission.Permissions;
 import com.atlassian.bamboo.specs.api.builders.permission.PermissionType;
 import com.atlassian.bamboo.specs.api.builders.permission.PlanPermissions;
-import config.Config;
 
 /**
  * Plan configuration for Bamboo.
@@ -30,25 +31,10 @@ public class DimProjectSpec {
         ProjectReference projectRef = new ProjectReference("DIM", "DimProject");
 
         //Generate Plans
-        Plan plan = createPlan(projectRef.getProject());
+        HelloWorldPlan plan = new HelloWorldPlan(projectRef.getProject());
 
         bambooServer.publish(plan);
 
-        PlanPermissions planPermission = new DimProjectSpec().createPlanPermission(plan.getIdentifier());
-
-        bambooServer.publish(planPermission);
-    }
-
-    public PlanPermissions createPlanPermission(PlanIdentifier planIdentifier) {
-        Permissions permission = new Permissions()
-                .userPermissions("bamboo", PermissionType.ADMIN, PermissionType.CLONE, PermissionType.EDIT)
-                .groupPermissions("bamboo-admin", PermissionType.ADMIN)
-                .loggedInUserPermissions(PermissionType.VIEW)
-                .anonymousUserPermissionView();
-        return new PlanPermissions(planIdentifier.getProjectKey(), planIdentifier.getPlanKey()).permissions(permission);
-    }
-
-    public static Plan createPlan(Project project) {
-        return HelloWorldPlan.HelloWorldPlanGen(project);
+        bambooServer.publish(plan.getPlanPermissions());
     }
 }

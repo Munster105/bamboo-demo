@@ -5,6 +5,7 @@ import com.atlassian.bamboo.specs.api.builders.project.Project;
 public class ProjectReference {
 
     private final Project project;
+
     public ProjectReference(String projectKey, String projectName) {
         this.project = genProject(projectKey, projectName);
     }

@@ -4,7 +4,7 @@ import com.atlassian.bamboo.specs.api.builders.plan.Plan;
 import com.atlassian.bamboo.specs.api.builders.project.Project;
 import com.atlassian.bamboo.specs.api.exceptions.PropertiesValidationException;
 import com.atlassian.bamboo.specs.api.util.EntityPropertiesBuilders;
-import core.DimProjectSpec;
+import Specs.DimProjectSpec;
 import org.junit.Test;
 
 public class DimProjectSpecTest {
